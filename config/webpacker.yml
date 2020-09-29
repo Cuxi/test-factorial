@@ -14,10 +14,10 @@ default: &default
   resolved_paths: []
 
   # Reload manifest.json on all requests so we reload latest compiled packs
-  cache_manifest: false
+  cache_manifest: true
 
   # Extract and emit a css file
-  extract_css: false
+  extract_css: true
 
   static_assets_extensions:
     - .jpg
@@ -34,9 +34,9 @@ default: &default
     - .woff2
 
   extensions:
-    - .jsx
     - .mjs
     - .js
+    - .jsx
     - .sass
     - .scss
     - .css
@@ -88,10 +88,10 @@ production:
   <<: *default
 
   # Production depends on precompilation of packs prior to booting for performance.
-  compile: false
+  compile: true
 
   # Extract and emit a css file
   extract_css: true
 
   # Cache manifest.json for performance
-  cache_manifest: true
+  cache_manifest: false

@@ -22,10 +22,8 @@ module.exports = function(api) {
         {
           targets: {
             node: 'current'
-          },
-          modules: 'commonjs'
-        },
-        '@babel/preset-react'
+          }
+        }
       ],
       (isProductionEnv || isDevelopmentEnv) && [
         '@babel/preset-env',
@@ -47,6 +45,7 @@ module.exports = function(api) {
     ].filter(Boolean),
     plugins: [
       'babel-plugin-macros',
+      '@babel/plugin-syntax-jsx',
       '@babel/plugin-syntax-dynamic-import',
       isTestEnv && 'babel-plugin-dynamic-import-node',
       '@babel/plugin-transform-destructuring',

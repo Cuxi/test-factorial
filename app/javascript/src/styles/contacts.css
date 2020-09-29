@@ -1,0 +1,41 @@
+.home {
+  border: 1px solid #efefef;
+  background: #fff;
+  font-family: sans-serif;
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 20px;
+  width: 100%;
+  padding:20px;
+}
+.link_new {
+  margin: 20px 0;
+}
+.link_new a {
+  color: #fff;
+    background-color: #71b406;
+    border-radius: 4px;
+    padding: 10px 30px;
+    cursor: pointer;
+    border-radius: 3px;
+    border: 1px solid #71b406;
+    text-align: center;
+    line-height: 20px;
+    min-height: 40px;
+    margin: 7px;
+    font-weight: 600;
+    text-decoration: none;
+}
+.card {
+  border: 1px solid #efefef;
+  background: #fff;
+  font-family: sans-serif;
+}
+.first_name .last_name .phone {
+  padding: 20px;
+}
+.link_view_email .link_set_email {
+  margin: 20px 0;
+}
