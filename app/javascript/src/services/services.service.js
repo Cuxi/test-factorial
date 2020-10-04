@@ -1,37 +1,27 @@
-import http from "../../http-common"
+import http from "../../http-common";
 import React from 'react';
+
 
 class ServicesDataService {
 
   login(user) {
-    return http.post('/login', {user}, {withCredentials: true});
+    return http.post('/login', {user});
   }
 
   logout() {
-    return http.delete('/logout', {
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem('userToken')}`
-      }}
-    );
+    return http.delete('/logout');
   }
 
   createUser(user) {
-    return http.post('/users', {user}, {withCredentials: true});
+    return http.post('/users', {user});
   }
 
   getAll() {
-    return http.get('/contacts', {
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem('userToken')}`
-      }}
-    );
+    return http.get('/contacts');
   }
 
   get(email) {
     return http.get('/contacts/show', {
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem('userToken')}`
-      },
       params: {
         email: email
       }
@@ -39,26 +29,15 @@ class ServicesDataService {
   }
 
   create(data) {
-    return http.post('/contacts', data, {
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem('userToken')}`
-      }}
-    );
+    return http.post('/contacts', data);
   }
 
   update(data) {
-    return http.put('/contacts/contact', data, {
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem('userToken')}`
-      }}
-    );
+    return http.put('/contacts/contact', data);
   }
 
   delete(email) {
     return http.delete('/contacts/delete', {
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem('userToken')}`
-      },
       params: {
         email: email
       }

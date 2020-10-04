@@ -5,7 +5,7 @@ import Service from "../../services/services.service";
 const Home = (props) => {
 
   const error = '';
-  
+
   const handleClick = () => {
     Service.logout()
     .then(response => {
@@ -43,7 +43,7 @@ const Home = (props) => {
         : null
       }
       {
-          this.state.errors? this.state.errors : ""
+          error? error : ""
       }
 
     </div>

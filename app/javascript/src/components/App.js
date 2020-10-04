@@ -22,6 +22,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
+    localStorage.setItem("csrf", document.querySelector('[name=csrf-token]').content);
     localStorage.getItem('userToken')?
     this.setState({ isLoggedIn: true}) : this.setState({ isLoggedIn: false})
   }

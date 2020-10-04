@@ -6,7 +6,6 @@ module Api
       def index
         contacts = Contact.all
         if contacts
-          # render json: ContactSerializer.new(@contacts).serialized_json, status: :ok
           render json: {
             contacts: contacts
           },
@@ -37,7 +36,6 @@ module Api
             },
             status: :created
           else
-            # render json: { error: contact.errors.messages }, status: :unprocessable_entity
             render json: {
               error: contact.errors.messages
             },
@@ -52,13 +50,11 @@ module Api
         contact = Contact.find_by(email: params[:email])
         if contact
           if contact.update(contact_params)
-            # render json: ContactSerializer.new(@contact).serialized_json, status: :ok
             render json: {
               contact: contact
             },
             status: :ok
           else
-            # render json: { error: contact.errors.messages }, status: :unprocessable_entity
             render json: {
               error: contact.errors.messages
             },
@@ -75,7 +71,6 @@ module Api
           if contact.destroy
             head :no_content, status: :ok
           else
-            # render json: { errors: @contact.errors.messages }, status: :unprocessable_entity
             render json: {
               errors: contact.errors.messages
             },
@@ -90,12 +85,6 @@ module Api
 
       def contact_params
         params.require(:contact).permit(:first_name, :last_name, :phone, :email)
-      end
-
-      def authenticate
-        authenticate_or_request_with_http_token do |token, options|
-          user = User.find_by(token: token)
-        end
       end
 
     end

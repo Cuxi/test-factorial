@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import {Redirect} from 'react-router-dom';
 import Service from "../../services/services.service";
 
 class Signup extends Component {
@@ -34,8 +35,10 @@ class Signup extends Component {
       password: this.state.password,
       password_confirmation: this.state.password_confirmation
     }
+    console.log(user);
     Service.createUser(user)
     .then(response => {
+      console.log(response)
       if (response.data.jwt != "") {
         this.setState({
           redirect: true,

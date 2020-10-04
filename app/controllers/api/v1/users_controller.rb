@@ -1,10 +1,11 @@
 module Api
     module V1
         class UsersController < ApplicationController
+          before_action :session_user, only: [:create]
 
-          # skip_before_action :require_login, only: [:create]
           def create
             user = User.create(user_params)
+            puts user
             if user.valid?
               payload = {user_id: user.id}
               token = JWT.encode(payload, 'my_secret')
