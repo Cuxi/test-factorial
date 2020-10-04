@@ -1,24 +1,15 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a test application for making a CRUD of contacts with an user authentication. 
 
-Things you may want to cover:
+To run this app:
 
-* Ruby version
+* Install Ruby 2.6.6
 
-* System dependencies
+* Install Rails 6.0.3
 
-* Configuration
+* Install PostgreSQL
 
-* Database creation
+* Run bundle install
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Then run rails server to run the app in localhost. To see how it runs go to https://test-factorial.herokuapp.com/
