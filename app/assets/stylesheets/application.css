@@ -33,10 +33,10 @@
    width: 100%;
    padding:20px;
  }
- .link_new, .link_view_email, .link_set_email, .link_list, .btn {
+ .link_new, .link_view_email, .link_set_email, .link_list, .btn, .link {
    margin: 20px 0;
  }
- .link_new a, .link_view_email a, .link_set_email a, .link_list a, .btn {
+ .link_new a, .link_view_email a, .link_set_email a, .link_list a, .btn, .link a {
    color: #fff;
    background-color: #71b406;
    border-radius: 4px;

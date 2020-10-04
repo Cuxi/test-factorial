@@ -1,23 +1,30 @@
 module Api
   module V1
     class ContactsController < ApplicationController
-      protect_from_forgery with: :null_session
+      before_action :session_user
 
       def index
         contacts = Contact.all
         if contacts
-          render json: ContactSerializer.new(contacts).serialized_json, status:200
+          # render json: ContactSerializer.new(@contacts).serialized_json, status: :ok
+          render json: {
+            contacts: contacts
+          },
+          status: :ok
         else
-          render status: 205
+          render status: :reset_content
         end
       end
 
       def show
         contact = Contact.find_by(email: params[:email])
         if contact
-          render json: ContactSerializer.new(contact).serialized_json, status:200
+          render json: {
+            contact: contact
+          },
+          status: :ok
         else
-          render status: 205
+          render status: :reset_content
         end
       end
 
@@ -25,12 +32,19 @@ module Api
         contact = Contact.new(contact_params)
         if contact
           if contact.save
-            render json: ContactSerializer.new(contact).serialized_json, status:200
+            render json: {
+              contact: contact
+            },
+            status: :created
           else
-            render json: { error: contact.errors.messages }, status: 422
+            # render json: { error: contact.errors.messages }, status: :unprocessable_entity
+            render json: {
+              error: contact.errors.messages
+            },
+            status: :unprocessable_entity
           end
         else
-          render status: 205
+          render status: :reset_content
         end
       end
 
@@ -38,12 +52,20 @@ module Api
         contact = Contact.find_by(email: params[:email])
         if contact
           if contact.update(contact_params)
-            render json: ContactSerializer.new(contact).serialized_json, status:200
+            # render json: ContactSerializer.new(@contact).serialized_json, status: :ok
+            render json: {
+              contact: contact
+            },
+            status: :ok
           else
-            render json: { error: contact.errors.messages }, status: 422
+            # render json: { error: contact.errors.messages }, status: :unprocessable_entity
+            render json: {
+              error: contact.errors.messages
+            },
+            status: :unprocessable_entity
           end
         else
-          render status: 205
+          render status: :reset_content
         end
       end
 
@@ -51,19 +73,29 @@ module Api
         contact = Contact.find_by(email: params[:email])
         if contact
           if contact.destroy
-            head :no_content
+            head :no_content, status: :ok
           else
-
-            render json: { errors: contact.errors.messages }, status: 422
+            # render json: { errors: @contact.errors.messages }, status: :unprocessable_entity
+            render json: {
+              errors: contact.errors.messages
+            },
+            status: :unprocessable_entity
           end
         else
-          render status: 205
+          render status: :reset_content
         end
       end
 
       private
+
       def contact_params
         params.require(:contact).permit(:first_name, :last_name, :phone, :email)
+      end
+
+      def authenticate
+        authenticate_or_request_with_http_token do |token, options|
+          user = User.find_by(token: token)
+        end
       end
 
     end

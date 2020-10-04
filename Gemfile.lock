@@ -58,6 +58,7 @@ GEM
       zeitwerk (~> 2.2, >= 2.2.2)
     addressable (2.7.0)
       public_suffix (>= 2.0.2, < 5.0)
+    bcrypt (3.1.16)
     bindex (0.8.1)
     bootsnap (1.4.8)
       msgpack (~> 1.0)
@@ -86,6 +87,7 @@ GEM
       concurrent-ruby (~> 1.0)
     jbuilder (2.10.1)
       activesupport (>= 5.0.0)
+    jwt (1.5.6)
     loofah (2.7.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
@@ -147,7 +149,7 @@ GEM
       execjs (~> 2.5)
       rails (>= 3.2)
       rainbow (~> 3.0)
-    regexp_parser (1.7.1)
+    regexp_parser (1.8.1)
     rubyzip (2.3.0)
     sass-rails (6.0.0)
       sassc-rails (~> 2.1, >= 2.1.1)
@@ -169,7 +171,6 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
-    sqlite3 (1.4.2)
     thor (1.0.1)
     thread_safe (0.3.6)
     tilt (2.0.10)
@@ -201,19 +202,21 @@ PLATFORMS
   x64-mingw32
 
 DEPENDENCIES
+  bcrypt (~> 3.1.7)
   bootsnap (>= 1.4.2)
   byebug
   capybara (>= 2.15)
   fast_jsonapi
   jbuilder (~> 2.7)
-  pg
+  jwt
+  pg (>= 0.18, < 2.0)
   puma (~> 4.1)
+  rack
   rack-cors
   rails (~> 6.0.3, >= 6.0.3.3)
   react_on_rails (= 11.2.1)
   sass-rails (>= 6)
   selenium-webdriver
-  sqlite3
   tzinfo-data
   web-console (>= 3.3.0)
   webdrivers
